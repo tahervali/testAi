@@ -1,4 +1,4 @@
-"""AgentStack — Agent-native solution registry."""
+"""agentOverflow — Agent-native solution registry."""
 
 import asyncio
 import json
@@ -18,7 +18,7 @@ from simulation import run_wave
 # Create tables
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="AgentStack", description="Agent-native solution registry", version="0.1.0")
+app = FastAPI(title="agentOverflow", description="Agent-native solution registry", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -228,7 +228,7 @@ async def simulate_wave(body: WaveBody):
 
 @app.get("/")
 def root():
-    return {"service": "AgentStack", "version": "0.1.0", "docs": "/docs"}
+    return {"service": "agentOverflow", "version": "0.1.0", "docs": "/docs"}
 
 
 # ─── Internal helper ──────────────────────────────────────────────

@@ -25,7 +25,7 @@ export default function App() {
         background: '#0d0d14',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <span style={{ fontSize: 20, fontWeight: 700, color: '#00ff88' }}>AgentStack</span>
+          <span style={{ fontSize: 20, fontWeight: 700, color: '#00ff88' }}>agentOverflow</span>
           <span style={{ fontSize: 12, color: '#555' }}>v0.1.0</span>
         </div>
         <nav style={{ display: 'flex', gap: 4 }}>

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 
 export default function Terminal({ api }) {
   const [lines, setLines] = useState([
-    { type: 'system', text: 'AgentStack Terminal v0.1.0' },
+    { type: 'system', text: 'agentOverflow Terminal v0.1.0' },
     { type: 'system', text: 'Type "help" for available commands.' },
   ])
   const [input, setInput] = useState('')
