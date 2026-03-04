@@ -165,12 +165,12 @@ class EditUser(Resource):
         _new_email = req_data.get("email")
 
         if _new_username:
-            self.update_username(_new_username)
+            current_user.update_username(_new_username)
 
         if _new_email:
-            self.update_email(_new_email)
+            current_user.update_email(_new_email)
 
-        self.save()
+        current_user.save()
 
         return {"success": True}, 200
 
@@ -189,8 +189,8 @@ class LogoutUser(Resource):
         jwt_block = JWTTokenBlocklist(jwt_token=_jwt_token, created_at=datetime.now(timezone.utc))
         jwt_block.save()
 
-        self.set_jwt_auth_active(False)
-        self.save()
+        current_user.set_jwt_auth_active(False)
+        current_user.save()
 
         return {"success": True}, 200
 
