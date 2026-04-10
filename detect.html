@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device Detection</title>
+  <style>
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .popup {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 40px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      max-width: 360px;
+      width: 90%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .popup .icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .popup h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: #1a1a1a;
+    }
+    .popup p {
+      margin: 0 0 24px;
+      color: #555;
+      font-size: 15px;
+    }
+    .popup button {
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 32px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .popup button:hover {
+      background: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" id="overlay">
+    <div class="popup">
+      <div class="icon" id="icon"></div>
+      <h2 id="heading"></h2>
+      <p id="message"></p>
+      <button id="goBack">OK</button>
+    </div>
+  </div>
+
+  <script>
+    function isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        || (navigator.maxTouchPoints > 1 && /Macintosh/i.test(navigator.userAgent));
+    }
+
+    const mobile = isMobile();
+
+    document.getElementById("icon").textContent = mobile ? "📱" : "🖥️";
+    document.getElementById("heading").textContent = mobile
+      ? "Mobile Device Detected"
+      : "Desktop Device Detected";
+    document.getElementById("message").textContent = mobile
+      ? "You opened this link from a mobile device."
+      : "You opened this link from a desktop device.";
+
+    document.getElementById("goBack").addEventListener("click", function () {
+      if (document.referrer || history.length > 1) {
+        history.back();
+      } else {
+        window.close();
+      }
+    });
+  </script>
+</body>
+</html>
